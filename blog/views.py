@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PostForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def post_list(request):
     years = [2015, 2016, 2017]
@@ -14,6 +15,17 @@ def post_list(request):
         posts = Post.objects.filter(title__contains=subj).order_by('published_date')
     else:
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    paginator = Paginator(posts, 5)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
     return render(request, 'blog/post_list.html', {'posts': posts, 'years': years})
 
 def post_detail(request, pk):
