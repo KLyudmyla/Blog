@@ -7,8 +7,11 @@ from .forms import PostForm
 def post_list(request):
     years = [2015, 2016, 2017]
     year = request.GET.get('year', None)
+    subj = request.GET.get('subj', None)
     if year:
         posts = Post.objects.filter(published_date__year=year).order_by('published_date')
+    elif subj:
+        posts = Post.objects.filter(title__contains=subj).order_by('published_date')
     else:
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts, 'years': years})

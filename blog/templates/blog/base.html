@@ -32,11 +32,10 @@
       <div class="blog-masthead">
         <div class="container">
           <nav class="blog-nav">
-            <a class="blog-nav-item active" href="#">Python</a>
-            <a class="blog-nav-item" href="#">Django</a>
-            <a class="blog-nav-item" href="#">HTML/CSS</a>
-            <a class="blog-nav-item" href="#">JS</a>
-            <a class="blog-nav-item" href="#">Outher</a>
+            <a href="{% url 'post_list' %}?subj=python" class="blog-nav-item">Python</a>
+            <a href="{% url 'post_list' %}?subj=django" class="blog-nav-item">Django</a>
+            <a href="{% url 'post_list' %}?subj=html/css" class="blog-nav-item">HTML/CSS</a>
+            <a href="{% url 'post_list' %}?subj=js" class="blog-nav-item">JS</a>
           </nav>
         </div>
       </div>
@@ -71,7 +70,7 @@
     </div><!-- /.container -->
 
     <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>Lyudmyla Kaluzhynova 2017</p>
       <p>
         <a href="#">Back to top</a>
       </p>
