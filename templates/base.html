@@ -63,12 +63,16 @@
 
 
     <div class="container">
-      <div class="page-header">
+    <div class="page-header">
         {% if user.is_authenticated %}
-          <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+            <p class="top-menu">Hello {{ user.username }} <a class="top-menu" href="{% url 'logout' %}"> <small>(Log out)</small> </a></p>
+        {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
         {% endif %}
-          <h1><a href="/">The Django blog</a></h1>
-      </div>
+        <h1><a href="/">Django Blog</a></h1>
+    </div>
       <div class="blog-masthead">
         <div class="container">
           <nav class="blog-nav">
@@ -87,15 +91,9 @@
           {% endblock %}
 
         </div><!-- /.blog-main -->
-
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-            <h4>Archives</h4>
-            <div class="list-group">
-              {% for y in years %}
-                  <a href="{% url 'post_list' %}?year={{ y }}" class="list-group-item">{{y}}</a>
-              {% endfor%}
-            </div>
-          </div>
+         {% block nav %}
+          {% endblock %}
+ 
 
     </div><!--/row-->
         </div><!-- /.blog-sidebar -->
@@ -117,8 +115,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <link href="{% static 'js/bootstrap.min.js' %}" >
+
   </body>
 </html>
