@@ -5,6 +5,11 @@ h1 a {
 body {
     padding-left: 15px;
 }
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}
+
 .page-header-a, .page-header-a:hover, .page-header-a:visited {
        color: #ffffff;
        float: right;
