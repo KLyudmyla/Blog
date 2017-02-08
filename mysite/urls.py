@@ -4,8 +4,6 @@ from django.contrib.auth import views
 
 #import numpy as np
 #import matplotlib.pyplot as plt
-from django.shortcuts import render
-from django.views.generic.base import TemplateView
 
 
 #def graph(request):
@@ -22,8 +20,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 #    url(r'^graph/', graph, name='graph'),
     url(r'', include('blog.urls')),
-    url(r'^accounts/login/$', views.login, name='login'),
-    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+#    url(r'^accounts/login/$', views.login, name='login'),
+#    url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'', include('registrations.urls')),
 ]
 
 

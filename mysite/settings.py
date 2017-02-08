@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'registrations',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,3 +108,10 @@ STATICFILES_DIRS =[
 ]
 
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kaluzhynoval@gmail.com'
+EMAIL_HOST_PASSWORD = 'python_django'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'kaluzhynova@gmail.com'

@@ -1,26 +1,31 @@
 {% extends "base.html" %}
 
+{% block title %} Регистрация {% endblock title %}
+
 {% block content %}
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-        <br/>
-        <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-        </table>
+<form name="form" id="form" class="form-horizontal" method="POST" action=".">
+       {% csrf_token %}
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            {{ form.username }}
+        </div>
 
-        <input type="submit" value="login" />
-        <input type="hidden" name="next" value="{{ next }}" />
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            {{ form.password }}
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-sm-12 controls">
+
+                <button type="submit" href="#" class="btn btn-primary ">Войти </button>
+
+            </div>
+        </div>
+
     </form>
-    <br/>
-{% endblock %}
+
+{% endblock content %}
+
